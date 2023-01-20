@@ -1,0 +1,27 @@
+{
+  "name": "demo-builder",
+  "version": "0.0.1",
+  "description": "",
+  "type": "commonjs",
+  "scripts": {
+    "start": "esrun src/main.ts",
+    "dev": "esrun --watch=src/*/*.ts src/main.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/body-parser": "^1.19.2",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "sqlite": "^4.1.2",
+    "sqlite3": "^5.1.4",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "@digitak/esrun": "^3.2.16",
+    "@types/express": "^4.17.15",
+    "@types/morgan": "^1.9.4"
+  }
+}
