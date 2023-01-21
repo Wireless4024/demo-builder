@@ -166,8 +166,9 @@ function apply_route(cfg: Config, route: Route) {
 			typeof resp !== "undefined" && res[typeof resp == 'string' ? "end" : "json"](resp)
 		} catch (e) {
 			console.error(e)
+			const err = "" + e
 			res.status(500)
-			res.send("Error! " + e)
+			res.send("Error! " + (err == '[object Object]' ? JSON.stringify(e) : err))
 		}
 	}
 }
