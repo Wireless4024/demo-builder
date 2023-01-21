@@ -155,14 +155,14 @@ export type RouteConfig = {
 	delete?: Route
 }
 
-type Route<T = any> = (req: Request<T>, res: EResponse) => any | Promise<any>
+type Route<T = any> = (req: Request<T>, res: EResponse, next?: NextFunction) => any | Promise<any>
 
 function apply_route(cfg: Config, route: Route) {
-	return async function (req: any, res: any) {
+	return async function (req: any, res: any, next: any) {
 		req.data = cfg.data_fn
 		loopback(req)
 		try {
-			const resp = await route(req, res)
+			const resp = await route(req, res, next)
 			typeof resp !== "undefined" && res[typeof resp == 'string' ? "end" : "json"](resp)
 		} catch (e) {
 			console.error(e)
