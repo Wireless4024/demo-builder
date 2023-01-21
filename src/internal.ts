@@ -202,10 +202,9 @@ export async function apply(app: Express, cfg: Config): Promise<ReturnType<Expre
 		}
 		Object.assign(LOOPBACK, {
 			fetch(path: string, _init: RequestInit) {
-				const ua = (this as any as ERequest)?.headers?.["user-agent"] || "Loopback"
 				const init = _init || {}
 				Object.assign(init.headers = init.headers || {}, {
-					"user-agent": ua
+					"user-agent": "Loopback"
 				})
 				return fetch("http://localhost:" + port + path, init)
 			}
